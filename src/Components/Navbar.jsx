@@ -4,7 +4,9 @@ import ThemeToggleBtn from './ThemeToggleBtn'
 
 const Navbar = ({ theme, setTheme }) => {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false
+
+  )
 
   return (
     <div className='flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70'>
@@ -19,19 +21,20 @@ const Navbar = ({ theme, setTheme }) => {
       {/* Navbar Links */}
       <div
         className={`text-gray-700 dark:text-white sm:text-sm
-        ${!sidebarOpen
-            ? 'max-sm:w-0 overflow-hidden'
-            : 'max-sm:w-60 max-sm:pl-10'
-          }
-        max-sm:fixed top-0 bottom-0 right-0
+        max-sm:fixed top-0 right-0 bottom-0
+        max-sm:w-64
         max-sm:min-h-screen
         max-sm:flex
         max-sm:flex-col
         max-sm:bg-primary
         max-sm:text-white
         max-sm:pt-20
+        max-sm:px-8
         sm:flex sm:items-center
-        gap-5 transition-all duration-300`}
+        gap-5
+        transition-all duration-300
+        ${sidebarOpen ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}
+        `}
       >
 
         {/* Close Button */}
@@ -42,37 +45,22 @@ const Navbar = ({ theme, setTheme }) => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <a
-          href='#'
-          className='sm:hover:border-b'
-          onClick={() => setSidebarOpen(false)}
-        >
+        <a href='#' className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>
           Home
         </a>
 
-        <a
-          href='#services'
-          className='sm:hover:border-b'
-          onClick={() => setSidebarOpen(false)}
-        >
+        <a href='#services' className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>
           Services
         </a>
 
-        <a
-          href='#our-work'
-          className='sm:hover:border-b'
-          onClick={() => setSidebarOpen(false)}
-        >
+        <a href='#our-work' className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>
           Our Work
         </a>
 
-        <a
-          href='#contact-us'
-          className='sm:hover:border-b'
-          onClick={() => setSidebarOpen(false)}
-        >
+        <a href='#contact-us' className='sm:hover:border-b' onClick={() => setSidebarOpen(false)}>
           Contact Us
         </a>
+
       </div>
 
       {/* Right Side */}
@@ -83,11 +71,9 @@ const Navbar = ({ theme, setTheme }) => {
           setTheme={setTheme}
         />
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu */}
         <img
-          src={theme === 'dark'
-            ? assets.menu_icon_dark
-            : assets.menu_icon}
+          src={theme === 'dark' ? assets.menu_icon_dark : assets.menu_icon}
           alt='menu'
           onClick={() => setSidebarOpen(true)}
           className='w-8 sm:hidden cursor-pointer'
@@ -99,11 +85,7 @@ const Navbar = ({ theme, setTheme }) => {
           className='text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full cursor-pointer hover:scale-105 transition-all'
         >
           Connect
-          <img
-            src={assets.arrow_icon}
-            width={14}
-            alt='arrow icon'
-          />
+          <img src={assets.arrow_icon} width={14} alt='arrow icon' />
         </a>
 
       </div>
