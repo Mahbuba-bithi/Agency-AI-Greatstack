@@ -118,7 +118,7 @@ const ContactUs = () => {
         {/* Button */}
         <button 
           type='submit'
-          className='w-max flex justify-center gap-2 bg-primary text-white text-sm px-10 py-3 rounded-full hover:scale-105 transition-all'
+          className='w-max flex  justify-center sm:justify-center gap-2 bg-primary text-white text-sm px-10 py-3 rounded-full hover:scale-105 transition-all'
         >
           Send Message
 
