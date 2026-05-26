@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import assets from '../assets/Agency-AI-Assets/assets/assets'
 import ThemeToggleBtn from './ThemeToggleBtn'
+import { motion } from "motion/react"
+
 
 const Navbar = ({ theme, setTheme }) => {
 
@@ -9,7 +11,13 @@ const Navbar = ({ theme, setTheme }) => {
   )
 
   return (
-    <div className='flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70'>
+    <motion.div 
+    
+    initial = {{opacity:0, y: -50}}
+    animate={{opacity:1, y:0}}
+    transition={{duration:0.6, ease:'easeOut'}}
+
+    className='flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70'>
 
       {/* Logo */}
       <img
@@ -90,7 +98,7 @@ const Navbar = ({ theme, setTheme }) => {
 
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 

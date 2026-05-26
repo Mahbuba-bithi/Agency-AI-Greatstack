@@ -1,32 +1,122 @@
+// import React from 'react'
+// import Title from './Title';
+// import { teamData } from '../assets/Agency-AI-Assets/assets/assets';
+// import { motion } from 'motion/react';
+
+
+// const Teams = () => {
+//   return (
+//     <div className='flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-800 dark:text-white'>
+
+//       <Title
+//         title='Meet the team'
+//         desc='A passionate team of digital experts dedicated to your brands success.'
+//       />
+
+//       <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+
+//         {teamData.map((team, index) => (
+
+//           <div
+//             key={index}
+//             className='flex max-sm:flex-col items-center gap-5 p-4 rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl shadow-gray-100 dark:shadow-white/5 hover:scale-103 transition-all duration-400'
+//           >
+
+//             <img
+//               src={team.image}
+//               className='w-12 h-12 rounded-full'
+//               alt=""
+//             />
+
+//             <div className='flex-1'>
+//               <h3 className='font-bold text-sm'>
+//                 {team.name}
+//               </h3>
+
+//               <p className='text-xs opacity-60'>
+//                 {team.title}
+//               </p>
+//             </div>
+
+//           </div>
+
+//         ))}
+
+//       </div>
+
+//     </div>
+//   )
+// }
+
+// export default Teams
+
+
+
+
+
 import React from 'react'
 import Title from './Title';
 import { teamData } from '../assets/Agency-AI-Assets/assets/assets';
+import { motion } from 'motion/react';
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, y: 25 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+}
 
 const Teams = () => {
   return (
-    <div className='flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-800 dark:text-white'>
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={container}
+      className='flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-800 dark:text-white'
+    >
 
-      <Title
-        title='Meet the team'
-        desc='A passionate team of digital experts dedicated to your brands success.'
-      />
+      {/* Title */}
+      <motion.div variants={item}>
+        <Title
+          title='Meet the team'
+          desc='A passionate team of digital experts dedicated to your brands success.'
+        />
+      </motion.div>
 
-      <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
+      {/* Grid */}
+      <motion.div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5'>
 
         {teamData.map((team, index) => (
-
-          <div
+          <motion.div
             key={index}
-            className='flex max-sm:flex-col items-center gap-5 p-4 rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl shadow-gray-100 dark:shadow-white/5 hover:scale-103 transition-all duration-400'
+            variants={item}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 10px 30px rgba(0,0,0,0.15)"
+            }}
+            transition={{ duration: 0.3 }}
+            className='flex max-sm:flex-col items-center gap-5 p-4 rounded-xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl shadow-gray-100 dark:shadow-white/5'
           >
 
-            <img
+            {/* Avatar */}
+            <motion.img
               src={team.image}
               className='w-12 h-12 rounded-full'
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
               alt=""
             />
 
+            {/* Info */}
             <div className='flex-1'>
               <h3 className='font-bold text-sm'>
                 {team.name}
@@ -37,13 +127,12 @@ const Teams = () => {
               </p>
             </div>
 
-          </div>
-
+          </motion.div>
         ))}
 
-      </div>
+      </motion.div>
 
-    </div>
+    </motion.div>
   )
 }
 
